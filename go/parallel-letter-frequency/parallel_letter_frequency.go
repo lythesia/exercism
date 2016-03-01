@@ -9,7 +9,7 @@ func ConcurrentFrequency(strs []string) FreqMap {
 			ch <- Frequency(_s)
 		}(s)
 	}
-	for i := 0; i < len(strs); i++ {
+	for range strs {
 		h := <-ch
 		for k, v := range h {
 			ans[k] += v // 0 as default
