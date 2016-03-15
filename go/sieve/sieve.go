@@ -12,10 +12,18 @@ func Sieve(n int) []int {
 			}
 		}
 	}
-	primes := make([]int, 0, n)
-	for i := 2; i <= n; i++ {
+	// fit memory
+	k := 0
+	for _, v := range noPrime[2:] {
+		if !v {
+			k++
+		}
+	}
+	primes := make([]int, k)
+	for i, j := 2, 0; i <= n; i++ {
 		if !noPrime[i] {
-			primes = append(primes, i)
+			primes[j] = i
+			j++
 		}
 	}
 	return primes
