@@ -2,12 +2,12 @@
   #:export (response-for))
 
 (define (response-for s)
-  (let*
-    ((ss (string-trim-both s)) (as (string-filter char-alphabetic? ss)))
+  (let
+    ((ss (string-trim-both s)))
     (cond
       ((string-null? ss) "Fine. Be that way!")
-      ((and (not (string-null? as)) (string-every char-upper-case? as)) "Whoa, chill out!")
-      ((equal? (string-ref ss (1- (string-length ss))) #\?) "Sure.")
+      ((and (string-any char-alphabetic? ss) (= (string-count ss char-lower-case?) 0)) "Whoa, chill out!")
+      ((string-suffix? "?" ss) "Sure.")
       (else "Whatever.")
     )
   )
