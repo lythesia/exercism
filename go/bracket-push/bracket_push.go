@@ -26,7 +26,7 @@ func Bracket(s string) (bool, error) {
 	st := make(stack, 0)
 
 	for _, v := range s {
-		if v == '(' || v == '[' || v == '{' {
+		if _, ok := pair[v]; ok {
 			st = st.push(v)
 		} else {
 			if st.empty() || pair[st.top()] != v {
