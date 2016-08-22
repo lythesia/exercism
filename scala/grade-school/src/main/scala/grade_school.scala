@@ -1,5 +1,5 @@
 class School {
-  private var _db = scala.collection.mutable.Map[Int, List[String]]()
+  private val _db = scala.collection.mutable.Map[Int, List[String]]()
 
   def add(n: String, g: Int) = _db(g) = _db.getOrElseUpdate(g, List()) :+ n
 
